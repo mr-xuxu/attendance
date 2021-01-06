@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 
 bgs_config = pd.read_excel('config.xlsx', 'Sheet3', header=4, engine='openpyxl')
 cx_config = pd.read_excel('config.xlsx', 'Sheet2', header=4, engine='openpyxl')
-df = pd.read_excel('file.xls', 'Sheet1')
+df = pd.read_excel('file.xlsx', engine='openpyxl')
 
 
 def cat(lis_s, cats, how="()"):
@@ -77,11 +77,11 @@ def bgs_work(a, b, c, d, e, f, value):
     elif value == 'b1-8:50':
         return (b[-1] - t('8:50')).seconds
     elif value == 'b1-b0':
-        return (b[1] - b[0]).seconds
+        return (b[-1] - b[0]).seconds
     elif value == 'd1-13:40':
-        return (d[1] - t('13:40')).seconds
+        return (d[-1] - t('13:40')).seconds
     elif value == 'd1-d0':
-        return (d[1] - d[0]).seconds
+        return (d[-1] - d[0]).seconds
     elif value == '(12:20-b0)+(18:00-13:40)':
         return ((t('12:20') - b[0]) + (t('18:00') - t('13:40'))).seconds
 
